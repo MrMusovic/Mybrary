@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
-}
+} //if environment is not set to production, run the dotenv dependencies
 
 const express = require('express')
 const app = express()
@@ -20,8 +20,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 //when app deployed you want to connect to server on web
 
 const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', error => console.log('Connected to Mongoose'))
+db.on('error', error => console.error(error)) //if we get an error when turning on db
+db.once('open', error => console.log('Connected to Mongoose')) //only running once when opening db
 
 app.use('/', indexRouter)
 
